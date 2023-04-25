@@ -84,9 +84,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    'static/',
+]
 
 MEDIA_URL = '/media/'
 
@@ -97,3 +100,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 MAX_FIRSTNAME_LASTNAME_LENGTH = 50
+
+PER_PAGE = 20
