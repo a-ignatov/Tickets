@@ -1,34 +1,16 @@
-<!DOCTYPE html> 
+
 <html>
-  <head>
-    <title>Pure CSS3 Tabs</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css" />
-  </head>
-  <body>
-
-    <div class="page">
-      <h1>TICKETS</h1>      
-  
-      
-      <!-- tabs -->
-      <div class="pcss3t pcss3t-effect-scale pcss3t-theme-1">
-        <input type="radio" name="pcss3t" checked  id="tab1"class="tab-content-first">
-        <label for="tab1"><i class="icon-bolt"></i>{{ ticket.id }}</label>
-
-        
-        <ul>
-          <li class="tab-content tab-content-first typography">
-            <h1>{{ ticket.description }}</h1>
-            <p>{{ ticket.ticket_status }}</p>
-            <p>{{ ticket.ticket_category }}</p>
-            <p class="text-right"><em>Time modified: <a target="_blank">{{ ticket.date_time_modified }}</a></em></p>
-          </li>
-
-        </ul>
-      </div>
-      <!--/ tabs -->
-    </div>
-  </body>
+<article>
+    <hr>
+    <ul>
+        <li>Номер: {{ ticket.id }}</li>
+        <li>Категория: {{ ticket.ticket_category }}</li>
+        <li>Статус: {{ ticket.ticket_status }}</li>
+        <li>Создано: {{ ticket.date_time_created }}</li>
+        <li>Дата последнего изменения: {{ ticket.date_time_modified|date:"d E Y" }}</li>
+    </ul>
+<p>
+    {{ ticket.description |linebreaksbr }}
+</p>
+</article>
 </html>

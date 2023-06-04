@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,6 +24,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,9 +82,18 @@ LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Europe/Moscow'
 
+LANGUAGES = [
+    ('ru', _('Russian')),
+    ('en', _('English')),     
+
+]
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'back/tickets/locale')
+]
+
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
 
 
 STATIC_URL = 'static/'
@@ -90,6 +101,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     'static/',
 ]
+LANGUAGE_SESSION_KEY = 'session_language_appname'
+LANGUAGE_COOKIE_NAME = 'cookie_language_appname' 
 
 MEDIA_URL = '/media/'
 
@@ -101,4 +114,4 @@ AUTH_USER_MODEL = 'users.User'
 
 MAX_FIRSTNAME_LASTNAME_LENGTH = 50
 
-PER_PAGE = 20
+PER_PAGE = 10

@@ -1,6 +1,8 @@
+{% load static %}
+{% load i18n %}
+{% trans 'password' %}
 <!doctype html>
 <html lang="ru">
-
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,14 +14,10 @@
     <title>
       111
     </title>
-    {% load static %}
+
     <link rel="stylesheet"
           href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
-          <link rel="stylesheet"
-          href="{% static 'pure_css.css' %}">
 
-
-    </script>
   </head>
 
   <body>
@@ -29,8 +27,9 @@
           {% for post in page %}
           {% include "ticket_item.html" with ticket=post %}
           {% endfor %}
-
+          {% include 'paginator.html' %}
         </p>
+        
       </div>
     </main>
   </body>
