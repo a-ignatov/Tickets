@@ -1,4 +1,4 @@
-from django.shortcuts import  render
+from django.shortcuts import  render,redirect,get_object_or_404
 from ticket_DTB . models import Ticket
 from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
@@ -12,7 +12,7 @@ from .utils import paginate_page
 
 
 def main(request):
-    tickets_list = Ticket.objects.all()
+    tickets_list = Ticket.objects.all().order_by("-date_time_modified")
     paginator = Paginator(tickets_list, settings.PER_PAGE)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
@@ -26,9 +26,13 @@ def main(request):
         context
     )
 
-class TicketChangeView(UpdateView,SingleObjectMixin):  
-    model = Ticket
-    template_name = "index.html"
-    form_class = TicketForm
-    def get_success_url(self):
-        return ('/')
+def ticket_update(request, pk):
+    original_ticket = get_object_or_404(Ticket, pk=pk)
+    form = TicketForm(request.POST or None,
+                    instance=original_ticket)
+    if request.method == "POST" and form.is_valid():
+        ticket = form.save(commit=False)
+        original_ticket.ticket_status = ticket.ticket_status
+        original_ticket.save()
+        return redirect('/',)
+    return redirect('/',)
