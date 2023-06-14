@@ -1,4 +1,3 @@
-
 <html>
 <article>
     <hr>
@@ -12,5 +11,15 @@
 <p>
     {{ ticket.description |linebreaksbr }}
 </p>
+    <div class="form-check">
+        <form method="post" action="/change_status/{{ ticket.id }}/">
+            Присвоить заявке статус:<br>
+            <input type="radio" name="ticket_status" value="IN_PROGRESS"> В работе<br>
+            <input type="radio" name="ticket_status" value="CLOSED"> Закрыто<br>
+            <input type="radio" name="ticket_status" value="DECLINED"> Отклонено
+            <br><br>
+            <button type="submit" class="btn btn-primary">Изменить статус заявки</button>
+          </form> 
+    </div>
 </article>
 </html>
