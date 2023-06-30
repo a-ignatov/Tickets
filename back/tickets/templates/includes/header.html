@@ -15,15 +15,19 @@
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link link-light {% if view_name  == 'tickets:ticket_create' %}active{% endif %}"
-                           href="{% url 'ticket_create' %}">Создать заявку</a>
+                           href="{% url 'main' %}">Создать заявку</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link link-light {% if view_name  == 'tickets:logout' %}active{% endif %}"
                            href="{% url 'logout' %}">Выйти</a>
                     </li>
-                    
+                    <li>Пользователь: {{ user.username }}</li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link link-light {% if view_name  == 'tickets:login' %}active{% endif %}"
+                           href="{% url 'main' %}">Войти</a>
+                    </li>
                 {% endif %}
-                <li>Пользователь: {{ user.username }}</li>
             {% endwith %}
         </ul>
     </div>

@@ -1,14 +1,10 @@
 from django.shortcuts import  render,redirect,get_object_or_404
 from ticket_DTB . models import Ticket
-from django.contrib.auth import get_user_model
 from django.core.paginator import Paginator
 from django.conf import settings
-
-from django.views.generic.edit import CreateView,UpdateView
-from django.views.generic.detail import SingleObjectMixin
 from ticket_DTB.forms import TicketForm
 from .utils import paginate_page
-
+from django.contrib.auth.views import LogoutView
 
 
 def main(request):
@@ -36,3 +32,4 @@ def ticket_update(request, pk):
         original_ticket.save()
         return redirect('/',)
     return redirect('/',)
+
