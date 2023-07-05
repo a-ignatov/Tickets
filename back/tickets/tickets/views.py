@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from ticket_DTB.forms import TicketForm
 from .utils import paginate_page
-from django.contrib.auth.views import LogoutView
+
 
 
 def main(request):
