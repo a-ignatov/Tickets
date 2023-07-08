@@ -30,6 +30,6 @@ def ticket_update(request, pk):
         ticket = form.save(commit=False)
         original_ticket.ticket_status = ticket.ticket_status
         original_ticket.save()
-        return redirect('/',)
+        return redirect('/')
     return redirect('/',)
 
