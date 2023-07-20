@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.conf import settings
 from ticket_DTB.forms import TicketForm
 from .utils import paginate_page
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -33,3 +34,12 @@ def ticket_update(request, pk):
         return redirect('/')
     return redirect('/',)
 
+@login_required
+def ticket_create(request):
+    form = TicketForm(request.POST or None,)
+    if not form.is_valid():
+        return render(request, 'create_ticket.html', {'form': form})
+    if request.method == "POST" and form.is_valid():
+        form.save()
+        return redirect('/')
+    return redirect('ticket_create',)

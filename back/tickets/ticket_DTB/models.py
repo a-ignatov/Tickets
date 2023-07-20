@@ -24,13 +24,13 @@ class Ticket(models.Model):
     ]
     ticket_category = models.CharField(
         choices=TICKET_CATEGORY_CHOICES,
-        default=OTHER,
         max_length = 50
     )
     CREATED = 'CREATED'
     IN_PROGRESS = 'IN_PROGRESS'
     CLOSED = 'CLOSED'
     DECLINED = 'DECLINED'
+
     TICKET_STATUS_CHOICES = [
         (CREATED, 'CREATED'),
         (IN_PROGRESS, 'IN_PROGRESS'),
@@ -42,6 +42,7 @@ class Ticket(models.Model):
         default=CREATED,
         max_length = 50
     )
+
     description = models.TextField(
         'Ticket verbose description',
         max_length=1500,

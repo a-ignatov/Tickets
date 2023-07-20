@@ -1,0 +1,45 @@
+{% load static %}
+{% csrf_token %}
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      Tickets main
+    </title>
+    <link rel="stylesheet"
+          href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
+    <main>
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 p-5">
+                    <div class="card">
+                        <div class="card-header">
+                        </div>
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data" 
+                            action= "{% url 'ticket_create' %}" 
+                            <form>
+                                {% csrf_token %}
+                                Категория:<br>
+                                <input type="radio" name="ticket_category" value="ADMIN"> Админ<br>
+                                <input type="radio" name="ticket_category" value="REPAIR"> Ремонт<br>
+                                <input type="radio" name="ticket_category" value="PRINTER"> Принтер<br>
+                                <input type="radio" name="ticket_category" value="CLEANING"> Уборка<br>
+                                <input type="radio" name="ticket_category" value="OTHER"> Прочее<br>
+                                Статус:<br>
+                                <input type="radio" name="ticket_status" value="CREATED"> Создано<br>
+                                Описание:<br>
+                                <input type='text' name='description'>
+                                <button type="submit" class="btn btn-primary">Сохранить</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+  </body>
