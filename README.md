@@ -21,8 +21,8 @@
 - Перейти в папку с утилитой manage.py
 > cd back/tickets
 - Выполнить миграции БД и создать суперпользователя
-> python manage.py makemigrations
-> python manage.py migrate
-> python manage.py createsuperuser
+> python manage.py makemigrations /n
+> python manage.py migrate /n
+> python manage.py createsuperuser /n
 - Запустить сервер
 > python3 manage.py runserver
