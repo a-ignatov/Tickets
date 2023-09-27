@@ -9,6 +9,7 @@
 - создание пользователей через админку Django (http://127.0.0.1:8000/admin/)
 - пользователи могут создавать и редактировать основное содержимое тикетов
 
+____
 # Инструкция по установке
 - Клонировать репозиторий в рабочую папку 
 > git clone git@github.com:a-ignatov/Tickets.git
@@ -21,8 +22,8 @@
 - Перейти в папку с утилитой manage.py
 > cd back/tickets
 - Выполнить миграции БД и создать суперпользователя
-> python manage.py makemigrations /n
-> python manage.py migrate /n
-> python manage.py createsuperuser /n
+* python manage.py makemigrations *
+* python manage.py migrate *
+* python manage.py createsuperuser *
 - Запустить сервер
 > python3 manage.py runserver
